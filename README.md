@@ -1,6 +1,6 @@
 # -ceng442-assignment1-ahmetgorkemcicek 
 NOTE: README is also provided as docx format
-
+FOR EMBEDDINGS: https://drive.google.com/drive/folders/1SV90ktjhmiaX81-t7p0w_NY5c8qiAH1D?usp=sharing
 DATA & GOAL
 This assignment aims to use 5 datasets in Azerbaijan, which contain labels that are either binary or ternary (negative, neutral, positive). Before moving ahead, we need to clarify the idea of using neutral labels for some sentences to ensure that the sentence cannot be clearly defined as positive or negative, meaning it has no particular sentiment.
 For sentiment analysis, we perform some preprocessing, normalization, and other processes like domain tagging. 
@@ -33,22 +33,20 @@ During sentence splitting and tokenization, if one of the tokens matches our pre
 Example:    ['Mən', 'bu', 'filmi', 'heç', 'bəyənmədim_NEG', 'və_NEG', 'yaxşı_NEG', 'olmadı']
 Also, in the assignment we had to propose new 10 words to the stopwords removing to get the context for getting better learned models. I added the list of 10 stopwords as: ["hansı","əgər","bəlkə","yaxud","çünki","qədər","necə","bəzi","başqa","sadəcə”]
 And we also must make “True” the parameter of “remove_stop_words” of “process_files” function to remove the stopwords to get better context between tokens in the stage of learning of  the  models. I actually tested models for both list the standart list of stopwords give more score in both model (0.001 differences).
-Compare results of negation words for nearest neighbors qualitatively:
-== Word2Vec Nearest Neighbors ==
+
+Compare results of negation words for nearest neighbors qualitatively:Word2Vec Nearest Neighbors 
 NN for 'yaxşı': ['iyi', 'yaxshi', '<RATING_POS>', 'awsome', 'işləməyib']
 NN for 'yaxşı_NEG': ['əvvəl_NEG', 'etmək_NEG', 'buna_NEG', 'olmadı_NEG', 'etmirəm_NEG']
 NN for 'pis': ['vərdişlərə', 'sürükliyir', 'yaxşıdır_NEG', 'əlinizə_NEG', 'örnək']
 NN for 'pis_NEG': ['olmaz_NEG', 'dəyər_NEG', 'kəsə_NEG', 'yoxdu_NEG', 'endirim_NEG']
-NN for 'bahalı': ['portretlerinə', 'villaları', 'yaxtaları', 'qabardılır', 'metallarla']
-'bahalı_NEG' not in vocabulary
 
-== FastText Nearest Neighbors ==
+
+FastText Nearest Neighbors
 NN for 'yaxşı': ['yaxşıı', 'yaxşıkı', 'yaxşıca', 'yaxş', 'yaxşıki']
 NN for 'yaxşı_NEG': ['yaxşısı_NEG', 'yaxşılığı_NEG', 'yaxşıdır_NEG', 'yaxşıları_NEG', 'yaxsdir_NEG']
 NN for 'pis': ['piis', 'pisdii', 'pisi', 'pi', 'pisdi']
 NN for 'pis_NEG': ['əks_NEG', 's_NEG', 'sms_NEG', 'items_NEG', 'tv_NEG']
-NN for 'bahalı': ['bahalıı', 'bahalısı', 'bahalıq', 'baharlı', 'bahalığı']
-NN for 'bahalı_NEG': ['baha_NEG', 'bahadır_NEG', 'basqı_NEG', 'narmalnı_NEG', 'orağı_NEG']
+
 
 Additionally, the assigment emhasizes, we have to check the number of tokenized words that deasciified, the main purpose of doing that is trying to improve the lexical consistency. I have created a global variable to count the total number of the deasciified words by slang_mapping. We get the old token word before we checking is the old token  in slang dict. we check the is the new token that replaced and contains the Azeri form of that word. If it is changed that means we deasciified the token, then we increase by one the counter of slanged word. In my model it has value of 4495.
 
