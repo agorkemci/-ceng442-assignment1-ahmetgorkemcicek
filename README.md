@@ -1,6 +1,8 @@
 # -ceng442-assignment1-ahmetgorkemcicek 
 NOTE: README is also provided as docx format
+
 FOR EMBEDDINGS: https://drive.google.com/drive/folders/1SV90ktjhmiaX81-t7p0w_NY5c8qiAH1D?usp=sharing
+
 DATA & GOAL
 This assignment aims to use 5 datasets in Azerbaijan, which contain labels that are either binary or ternary (negative, neutral, positive). Before moving ahead, we need to clarify the idea of using neutral labels for some sentences to ensure that the sentence cannot be clearly defined as positive or negative, meaning it has no particular sentiment.
 For sentiment analysis, we perform some preprocessing, normalization, and other processes like domain tagging. 
