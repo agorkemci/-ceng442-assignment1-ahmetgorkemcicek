@@ -8,7 +8,7 @@ This assignment aims to use 5 datasets in Azerbaijan, which contain labels that 
 For sentiment analysis, we perform some preprocessing, normalization, and other processes like domain tagging. 
 
 PREPROCESSING
-Preprocessing Firstly, we examine the sentences to check if they are empty or contain only spaces with no characters. We also need to check for duplicated sentences to achieve better learning models. If there are multiple spaces, they are converted into a single space. Also, if the parameter keep_sentence_punctuation is false, punctuations  at the end of sentences are removed. After that, we continue to normalization. In the first stage of normalization, we convert the characters into lowercase. We also replace English chars into Azerbaijani characters as needed (I->ı and İ->i).  We handle URLs, emojis, and hashtag normalizations. We replace digits with <NUM>. Then, we deasciify the English characters to get the correct representation of words in the Azerbaijani language(cox-> çox). We mostly try to find patterns to replace them. We remove HTML tags that start with < and end with >. We remove https:// and http:// from words and tokenize them as URL. We remove words that start with @ and any digits, characters, or _ are tokenized as USER. We also check the words that contain a character repetead and more than three times, we reduced them  to a single of that character(yoooox -> yoox). Others are documented in minichallenges of readme.
+Preprocessing Firstly, we examine the sentences to check if they are empty or contain only spaces with no characters. We also need to check for duplicated sentences to achieve better learning models. If there are multiple spaces, they are converted into a single space. Also, if the parameter keep_sentence_punctuation is false, punctuations  at the end of sentences are removed. We normalize punctuations if they repeated more than one time. After that, we continue to normalization. In the first stage of normalization, we convert the characters into lowercase. We also replace English chars into Azerbaijani characters as needed (I->ı and İ->i).  We handle URLs, emojis, and hashtag normalizations. We replace digits with <NUM>. Then, we deasciify the English characters to get the correct representation of words in the Azerbaijani language(cox-> çox). We mostly try to find patterns to replace them. We remove HTML tags that start with < and end with >. We remove https:// and http:// from words and tokenize them as URL. We remove words that start with @ and any digits, characters, or _ are tokenized as USER. We also check the words that contain a character repetead and more than three times, we reduced them  to a single of that character(yoooox -> yoox). Others are documented in minichallenges of readme.
 
 Some Examples:
 1. Lowercase & Azerbaijani-aware
@@ -54,16 +54,18 @@ In Domain-aware preprocessing, we are trying to classify  the sentences  for fou
 
 EMBEDDINGS
  	The parameters of Word2Vec and FastText in the chart:
-Parameter	Word2Vec	FastText
-Vector size	300	300
-Window	5	5
-Min count	3	3
-Epochs	10	10
-Skip-gram	1	1
-Negative sampling	10	10
-Subword n-gram range	–	3–6
-Seed	42	42
-Workers	1	1
+| **Parameter**            | **Word2Vec** | **FastText** |
+| ------------------------ | ------------ | ------------ |
+| **Vector size**          | 300          | 300          |
+| **Window**               | 5            | 5            |
+| **Min count**            | 3            | 3            |
+| **Epochs**               | 10           | 10           |
+| **Skip-gram**            | 1            | 1            |
+| **Negative sampling**    | 10           | 10           |
+| **Subword n-gram range** | –            | 3–6          |
+| **Seed**                 | 42           | 42           |
+| **Workers**              | 1            | 1            |
+
 
 
 Results:
